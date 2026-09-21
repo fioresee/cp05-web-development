@@ -37,7 +37,7 @@ const Produtos = () => { //criando componente produtos
                     {/* LOGO */}
                     <div className="flex items-center gap-2 text-2xl font-bold">
 
-                        🍴
+                        <img src="./public/GourmetOn.png" alt="Logo" className="h-20 w-20"/> 
 
                         <span>
                             Gourmet<span className="text-orange-500">ON</span>
@@ -51,35 +51,35 @@ const Produtos = () => { //criando componente produtos
 
                         <a
                             href="#inicio"
-                            className="text-gray-600 hover:text-orange-500 font-medium transition"
+                            className="text-gray-600 hover:text-orange-500 font-medium transition scroll-mt-20 px-6"
                         >
                             Início
                         </a>
 
                         <a
                             href="#cardapio"
-                            className="text-gray-600 hover:text-orange-500 font-medium transition"
+                            className="text-gray-600 hover:text-orange-500 font-medium transition scroll-mt-20 px-6"
                         >
                             Cardápio
                         </a>
 
                         <a
                             href="#depoimentos"
-                            className="text-gray-600 hover:text-orange-500 font-medium transition"
+                            className="text-gray-600 hover:text-orange-500 font-medium transition scroll-mt-20 px-6"
                         >
                             Depoimentos
                         </a>
 
                         <a
                             href="#sobre"
-                            className="text-gray-600 hover:text-orange-500 font-medium transition"
+                            className="text-gray-600 hover:text-orange-500 font-medium transition scroll-mt-20 px-6"
                         >
                             Sobre nós
                         </a>
 
                         <a
                             href="#contato"
-                            className="text-gray-600 hover:text-orange-500 font-medium transition"
+                            className="text-gray-600 hover:text-orange-500 font-medium transition scroll-mt-20 px-6"
                         >
                             Contato
                         </a>
@@ -88,7 +88,7 @@ const Produtos = () => { //criando componente produtos
 
 
                     {/* BOTÃO */}
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-full font-semibold transition">
+                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-full font-semibold transition cursor-pointer shadow-lg">
                         Download App
                     </button>
 
@@ -101,7 +101,7 @@ const Produtos = () => { //criando componente produtos
             <main>
 
                 <section
-                    className="max-w-7xl mx-auto px-6 py-20 md:py-28 flex flex-col md:flex-row items-center justify-between gap-12"
+                    className="max-w-7xl mx-auto px-6 py-20 md:py-28 flex flex-col md:flex-row items-center justify-between gap-12 scroll-mt-20 py-20 px-6"
                     id="inicio"
                 >
 
@@ -145,7 +145,7 @@ const Produtos = () => { //criando componente produtos
                     {/* IMAGEM */}
                     <div className="w-72 h-72 md:w-96 md:h-96 rounded-full bg-orange-100 flex items-center justify-center text-9xl shadow-xl">
 
-                        🍝
+                        <img src="./public/GourmetOn.png" alt="Logo" className="h-80 w-80 animate-float"/>
 
                     </div>
 
@@ -209,7 +209,7 @@ const Produtos = () => { //criando componente produtos
                                         </h3>
 
 
-                                        <button className="mt-4 text-orange-500 font-semibold hover:text-orange-600 transition">
+                                        <button className="mt-4 text-orange-500 font-semibold hover:text-orange-600 transition cursor-pointer transition-transform duration-100 hover:scale-105 hover:text-yellow-500">
 
                                             Ver descrição →
 
@@ -249,10 +249,10 @@ const Produtos = () => { //criando componente produtos
                         </p>
 
 
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-5">
 
 
-                            <div className="bg-white p-7 rounded-2xl shadow-md">
+                            <div className="bg-white p-7 rounded-2xl shadow-md transition cursor-pointer transition-transform duration-100 hover:scale-105 border-2 border-orange-500">
 
                                 <p className="text-gray-600 leading-relaxed">
                                     "Encontrei várias receitas incríveis
@@ -266,7 +266,7 @@ const Produtos = () => { //criando componente produtos
                             </div>
 
 
-                            <div className="bg-white p-7 rounded-2xl shadow-md">
+                            <div className="bg-white p-7 rounded-2xl shadow-md transition cursor-pointer transition-transform duration-100 hover:scale-105 border-2 border-orange-500">
 
                                 <p className="text-gray-600 leading-relaxed">
                                     "O GourmetON facilitou muito minha
@@ -280,7 +280,7 @@ const Produtos = () => { //criando componente produtos
                             </div>
 
 
-                            <div className="bg-white p-7 rounded-2xl shadow-md">
+                            <div className="bg-white p-7 rounded-2xl shadow-md transition cursor-pointer transition-transform duration-100 hover:scale-105 border-2 border-orange-500">
 
                                 <p className="text-gray-600 leading-relaxed">
                                     "Sempre encontro algo diferente
@@ -300,13 +300,44 @@ const Produtos = () => { //criando componente produtos
 
                 </section>
 
+                <section id="sobre" className="scroll-mt-20 py-20 px-6 bg-white">
+                    <p className="text-5xl text-center mb-2">👥</p>
+                    <h1 className="text-3xl font-bold text-center mb-3">Sobre Nós</h1>
+                    <p className="text-center text-gray-600">"Por que eu deveria usar o GourmetON?"</p>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10 p-10">
+
+                        <div className="text-center border-2 border-orange-500 p-6 rounded-lg shadow-md transition cursor-pointer transition-transform duration-100 hover:scale-105">
+                                <p>🚀</p>
+                                <h2 className="text-xl font-bold mt-4 mb-3">Entrega rápida</h2>
+                                <p className="text-gray-600">
+                                    Receba seus pedidos com agilidade e aproveite sua refeição sem precisar esperar muito.
+                                </p>
+                        </div>
+
+                        <div className="text-center border-2 border-orange-500 p-6 rounded-lg shadow-md transition cursor-pointer transition-transform duration-100 hover:scale-105">
+                                <p>🍽️</p>
+                                <h2 className="text-xl font-bold mt-4 mb-3">Variedade de opções</h2>
+                                <p className="text-gray-600">Encontre diferentes pratos e opções de restaurantes para escolher exatamente o que está com vontade de comer.</p>
+                        </div>
+
+                        <div className="text-center border-2 border-orange-500 p-6 rounded-lg shadow-md transition cursor-pointer transition-transform duration-100 hover:scale-105">
+                                <p>💳</p>
+                                <h2 className="text-xl font-bold mt-4 mb-3">Pagamento fácil</h2>
+                                <p className="text-gray-600">Faça seus pedidos de forma simples e tenha praticidade na hora de realizar o pagamento.</p>
+                        </div> 
+
+                    </div> 
+
+                </section>
+
             </main>
 
 
             {/* FOOTER */}
             <footer
                 className="bg-gray-900 text-white"
-                id="sobre"
+                
             >
 
                 <div className="max-w-7xl mx-auto px-6 py-14">
