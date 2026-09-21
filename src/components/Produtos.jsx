@@ -2,8 +2,10 @@
 import React, {useState, useEffect} from 'react' // Importando React e os hooks useState e useEffect
 
 const Produtos = () => { //criando componente produtos 
-
+    
     const [comidas, setComidas] = useState([]);
+    const [busca, setBusca] = useState('');
+    const [tempoMaximo, setTempoMaximo] = useState('');
 
     useEffect (() => {
 
@@ -23,6 +25,17 @@ const Produtos = () => { //criando componente produtos
         fetchData();
 
     }, []);
+
+    const receitasFiltradas = comidas.filter((receita) => {
+    const correspondeBusca = receita.title
+        .toLowerCase()
+        .includes(busca.toLowerCase());
+
+    const correspondeTempo =
+        tempoMaximo === '' || receita.readyInMinutes <= Number(tempoMaximo);
+
+    return correspondeBusca && correspondeTempo;
+});
 
 
     return (
@@ -44,7 +57,7 @@ const Produtos = () => { //criando componente produtos
                         </span>
 
                     </div>
-
+                    
 
                     {/* MENU */}
                     <nav className="hidden md:flex items-center gap-7">
@@ -177,12 +190,33 @@ const Produtos = () => { //criando componente produtos
                             </p>
 
                         </div>
+                    
+                    
 
+                    <input type="text" placeholder="Buscar receitas..." 
+                    value={busca} 
+                    onChange={(e) => setBusca(e.target.value)} className="w-full max-w-md mx-auto block px-5 py-3 mb-5 rounded-full border-2 border-orange-200 bg-orange-50 text-gray-700 placeholder-gray-400 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition"/>
+
+                        <select
+                            value={tempoMaximo}
+                            onChange={(e) => setTempoMaximo(e.target.value)}
+                            className="w-full max-w-md mx-auto block mb-5 mt-4 px-5 py-3 rounded-full border-2 border-orange-200 bg-orange-50 text-gray-700 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition"
+                        >
+                            <option value="">⏱️ Qualquer tempo</option>
+                            <option value="30">Até 30 minutos</option>
+                            <option value="60">Até 60 minutos</option>
+                            <option value="90">Até 90 minutos</option>
+                        </select>
 
                         {/* CARDS */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
 
-                            {comidas.map((receita) => (
+                        {receitasFiltradas.length === 0 ? (
+                            <p className="text-gray-500 col-span-full text-center">
+                                Nenhuma receita encontrada.
+                            </p>
+                        ) : (
+                            receitasFiltradas.map((receita) => (
 
                                 <div
                                     key={receita.id}
@@ -191,15 +225,12 @@ const Produtos = () => { //criando componente produtos
 
                                     {/* IMAGEM */}
                                     {receita.image && (
-
                                         <img
                                             src={receita.image}
                                             alt={receita.title}
                                             className="w-full h-48 object-cover"
                                         />
-
                                     )}
-
 
                                     {/* CONTEÚDO */}
                                     <div className="p-5">
@@ -207,21 +238,23 @@ const Produtos = () => { //criando componente produtos
                                         <h3 className="font-bold text-lg line-clamp-2">
                                             {receita.title}
                                         </h3>
-
+                                        <h3 className="text-gray-500 mt-2">
+                                            Tempo de preparo: {receita.readyInMinutes} minutos
+                                        </h3>
 
                                         <button className="mt-4 text-orange-500 font-semibold hover:text-orange-600 transition cursor-pointer transition-transform duration-100 hover:scale-105 hover:text-yellow-500">
-
                                             Ver descrição →
-
                                         </button>
 
                                     </div>
 
                                 </div>
 
-                            ))}
+                            ))
+                        )}
+                    
 
-                        </div>
+                    </div>
 
                     </div>
 
@@ -330,7 +363,45 @@ const Produtos = () => { //criando componente produtos
                     </div> 
 
                 </section>
+                
+                {/* FORMULÁRIO DE CONTATO */}
+                <section
+                    id="contato"
+                    className="py-20 px-6 bg-orange-50 scroll-mt-20"
+                >
+                    <div className="max-w-2xl mx-auto text-center">
 
+                        <span className="text-4xl">
+                            📩
+                        </span>
+
+                        <h2 className="text-4xl font-bold mt-3">
+                            Entre em contato
+                        </h2>
+
+                        <p className="text-gray-600 mt-3 mb-8">
+                            Cadastre seu e-mail e fique por dentro das novidades do GourmetON.
+                        </p>
+
+                        <form className="flex flex-col sm:flex-row gap-3">
+
+                            <input
+                                type="email"
+                                placeholder="Digite seu e-mail"
+                                className="flex-1 px-5 py-3 rounded-full border-2 border-orange-200 bg-white text-gray-700 placeholder-gray-400 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition"
+                            />
+
+                            <button
+                                type="submit"
+                                className="bg-orange-500 hover:bg-orange-600 text-white px-7 py-3 rounded-full font-semibold transition cursor-pointer shadow-md"
+                            >
+                                Cadastrar
+                            </button>
+
+                        </form>
+
+                    </div>
+                </section>
             </main>
 
 
@@ -414,7 +485,7 @@ const Produtos = () => { //criando componente produtos
 
 
                         {/* CONTATO */}
-                        <div id="contato">
+                        <div>
 
                             <h3 className="font-bold text-lg mb-4">
                                 Redes sociais
