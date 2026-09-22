@@ -7,6 +7,7 @@ const Produtos = () => { //criando componente produtos
     const [busca, setBusca] = useState('');
     const [tempoMaximo, setTempoMaximo] = useState('');
     const [cardAberto, setCardAberto] = useState(null); 
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect (() => {
 
@@ -27,6 +28,21 @@ const Produtos = () => { //criando componente produtos
 
     }, []);
 
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 0);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+
+
     const receitasFiltradas = comidas.filter((receita) => {
     const correspondeBusca = receita.title
         .toLowerCase()
@@ -44,7 +60,7 @@ const Produtos = () => { //criando componente produtos
         <div className="min-h-screen bg-orange-50 text-gray-800">
 
             {/* HEADER */}
-            <header className="bg-white shadow-sm sticky top-0 z-50">
+            <header className={`sticky top-0 z-50 shadow-sm ${scrolled ? 'bg-white/90' : 'bg-white'}`}>
 
                 <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
 
