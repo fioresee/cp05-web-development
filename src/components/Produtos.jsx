@@ -6,6 +6,7 @@ const Produtos = () => { //criando componente produtos
     const [comidas, setComidas] = useState([]);
     const [busca, setBusca] = useState('');
     const [tempoMaximo, setTempoMaximo] = useState('');
+    const [cardAberto, setCardAberto] = useState(null); 
 
     useEffect (() => {
 
@@ -218,11 +219,8 @@ const Produtos = () => { //criando componente produtos
                         ) : (
                             receitasFiltradas.map((receita) => (
 
-                                <div
-                                    key={receita.id}
-                                    className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition duration-300"
-                                >
-
+                                <div key={receita.id} className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition duration-300">
+                                    
                                     {/* IMAGEM */}
                                     {receita.image && (
                                         <img
@@ -242,9 +240,14 @@ const Produtos = () => { //criando componente produtos
                                             Tempo de preparo: {receita.readyInMinutes} minutos
                                         </h3>
 
-                                        <button className="mt-4 text-orange-500 font-semibold hover:text-orange-600 transition cursor-pointer transition-transform duration-100 hover:scale-105 hover:text-yellow-500">
+                                        <button onClick={() => setCardAberto(cardAberto === receita.id ? null : receita.id)} className="mt-4 text-orange-500 font-semibold hover:text-orange-600 transition cursor-pointer transition-transform duration-100 hover:scale-105 hover:text-yellow-500">
                                             Ver descrição →
                                         </button>
+                                        {cardAberto === receita.id && (
+                                            <div>
+                                                <p>{receita.instructions}</p>
+                                            </div>
+                                        )}
 
                                     </div>
 
