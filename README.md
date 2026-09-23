@@ -56,7 +56,7 @@ src/
 [CP05 - Web Development - GITHUB](https://github.com/fioresee/cp05-web-development)
 
 - Deploy no Vercel:
-[CP05 - Web Development - VERCEL](cp05-web-development.vercel.app)
+[CP05 - Web Development - VERCEL](https://cp05-web-development.vercel.app/)
 
 # Sobre o Projeto
 
