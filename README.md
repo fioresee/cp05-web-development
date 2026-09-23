@@ -49,14 +49,14 @@ src/
 - Felipe Ricardo Moreira Aguiar – RM 573410
 - Gustavo Ferreira Silva – RM 571675
 - Matheus Sequeira Franco da Silva – RM 571127
-- Felipi Bandeira de Godoy - RM
+- Felipi Bandeira de Godoy - RM 573741
 
 # Links
 - Repositório:
-
+[CP05 - Web Development - GITHUB](https://github.com/fioresee/cp05-web-development)
 
 - Deploy no Vercel:
-
+[CP05 - Web Development - VERCEL](cp05-web-development.vercel.app)
 
 # Sobre o Projeto
 
