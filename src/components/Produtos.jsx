@@ -1,4 +1,3 @@
-
 import React, {useState, useEffect} from 'react' // Importando React e os hooks useState e useEffect
 
 const Produtos = () => { //criando componente produtos 
@@ -62,12 +61,12 @@ const Produtos = () => { //criando componente produtos
             {/* HEADER */}
             <header className={`sticky top-0 z-50 shadow-sm ${scrolled ? 'bg-white/90' : 'bg-white'}`}>
 
-                <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+                <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
                     {/* LOGO */}
                     <div className="flex items-center gap-2 text-2xl font-bold">
 
-                        <img src="./public/GourmetOn.png" alt="Logo" className="h-20 w-20"/> 
+                        <img src="./GourmetOn.png" alt="Logo" className="h-11 w-11 sm:h-14 sm:w-14"/> 
 
                         <span>
                             Gourmet<span className="text-orange-500">ON</span>
@@ -118,7 +117,7 @@ const Produtos = () => { //criando componente produtos
 
 
                     {/* BOTÃO */}
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-2.5 rounded-full font-semibold transition cursor-pointer shadow-lg">
+                    <button className="bg-orange-500 hover:bg-orange-600 text-white text-sm sm:text-base px-3 sm:px-5 py-2 rounded-full font-semibold transition cursor-pointer shadow-md whitespace-nowrap">
                         Download App
                     </button>
 
@@ -131,7 +130,7 @@ const Produtos = () => { //criando componente produtos
             <main>
 
                 <section
-                    className="max-w-7xl mx-auto px-6 py-20 md:py-28 flex flex-col md:flex-row items-center justify-between gap-12 scroll-mt-20 py-20 px-6"
+                    className="max-w-7xl mx-auto px-6 py-12 md:py-28 flex flex-col md:flex-row items-center justify-between gap-12 scroll-mt-20"
                     id="inicio"
                 >
 
@@ -144,13 +143,7 @@ const Produtos = () => { //criando componente produtos
 
 
                         <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-
-                            Descubra receitas
-
-                            <span className="text-orange-500">
-                                incríveis
-                            </span>
-
+                            Descubra receitas<span className="text-orange-500"> incríveis</span>
                         </h1>
 
 
@@ -184,7 +177,7 @@ const Produtos = () => { //criando componente produtos
 
                 {/* CARDÁPIO */}
                 <section
-                    className="bg-white py-20"
+                    className="bg-white py-20 scroll-mt-20"
                     id="cardapio"
                 >
 
@@ -210,9 +203,13 @@ const Produtos = () => { //criando componente produtos
                     
                     
 
-                    <input type="text" placeholder="Buscar receitas..." 
-                    value={busca} 
-                    onChange={(e) => setBusca(e.target.value)} className="w-full max-w-md mx-auto block px-5 py-3 mb-5 rounded-full border-2 border-orange-200 bg-orange-50 text-gray-700 placeholder-gray-400 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition"/>
+                        <input 
+                            type="text" 
+                            placeholder="Buscar receitas..." 
+                            value={busca} 
+                            onChange={(e) => setBusca(e.target.value)} 
+                            className="w-full max-w-md mx-auto block px-5 py-3 mb-5 rounded-full border-2 border-orange-200 bg-orange-50 text-gray-700 placeholder-gray-400 outline-none focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition"
+                        />
 
                         <select
                             value={tempoMaximo}
@@ -228,52 +225,59 @@ const Produtos = () => { //criando componente produtos
                         {/* CARDS */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
 
-                        {receitasFiltradas.length === 0 ? (
-                            <p className="text-gray-500 col-span-full text-center">
-                                Nenhuma receita encontrada.
-                            </p>
-                        ) : (
-                            receitasFiltradas.map((receita) => (
+                            {receitasFiltradas.length === 0 ? (
+                                <p className="text-gray-500 col-span-full text-center">
+                                    Nenhuma receita encontrada.
+                                </p>
+                            ) : (
+                                receitasFiltradas.map((receita) => (
 
-                                <div key={receita.id} className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition duration-300">
+                                    <div 
+                                        key={receita.id} 
+                                        className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition duration-300"
+                                    >
                                     
-                                    {/* IMAGEM */}
-                                    {receita.image && (
-                                        <img
-                                            src={receita.image}
-                                            alt={receita.title}
-                                            className="w-full h-48 object-cover"
-                                        />
-                                    )}
-
-                                    {/* CONTEÚDO */}
-                                    <div className="p-5">
-
-                                        <h3 className="font-bold text-lg line-clamp-2">
-                                            {receita.title}
-                                        </h3>
-                                        <h3 className="text-gray-500 mt-2">
-                                            Tempo de preparo: {receita.readyInMinutes} minutos
-                                        </h3>
-
-                                        <button onClick={() => setCardAberto(cardAberto === receita.id ? null : receita.id)} className="mt-4 text-orange-500 font-semibold hover:text-orange-600 transition cursor-pointer transition-transform duration-100 hover:scale-105 hover:text-yellow-500">
-                                            Ver descrição →
-                                        </button>
-                                        {cardAberto === receita.id && (
-                                            <div>
-                                                <p>{receita.instructions}</p>
-                                            </div>
+                                        {/* IMAGEM */}
+                                        {receita.image && (
+                                            <img
+                                                src={receita.image}
+                                                alt={receita.title}
+                                                className="w-full h-48 object-cover"
+                                            />
                                         )}
+
+                                        {/* CONTEÚDO */}
+                                        <div className="p-5">
+
+                                            <h3 className="font-bold text-lg line-clamp-2">
+                                                {receita.title}
+                                            </h3>
+
+                                            <h3 className="text-gray-500 mt-2">
+                                                Tempo de preparo: {receita.readyInMinutes} minutos
+                                            </h3>
+
+                                            <button 
+                                                onClick={() => setCardAberto(cardAberto === receita.id ? null : receita.id)} 
+                                                className="mt-4 text-orange-500 font-semibold hover:text-orange-600 transition cursor-pointer transition-transform duration-100 hover:scale-105 hover:text-yellow-500"
+                                            >
+                                                Ver descrição →
+                                            </button>
+
+                                            {cardAberto === receita.id && (
+                                                <div>
+                                                    <p>{receita.instructions}</p>
+                                                </div>
+                                            )}
+
+                                        </div>
 
                                     </div>
 
-                                </div>
+                                ))
+                            )}
 
-                            ))
-                        )}
-                    
-
-                    </div>
+                        </div>
 
                     </div>
 
@@ -283,7 +287,7 @@ const Produtos = () => { //criando componente produtos
                 {/* DEPOIMENTOS */}
                 <section
                     id="depoimentos"
-                    className="py-20 px-6"
+                    className="py-20 px-6 scroll-mt-20"
                 >
 
                     <div className="max-w-7xl mx-auto text-center">
@@ -352,31 +356,62 @@ const Produtos = () => { //criando componente produtos
 
                 </section>
 
+
                 <section id="sobre" className="scroll-mt-20 py-20 px-6 bg-white">
+
                     <p className="text-5xl text-center mb-2">👥</p>
-                    <h1 className="text-3xl font-bold text-center mb-3">Sobre Nós</h1>
-                    <p className="text-center text-gray-600">"Por que eu deveria usar o GourmetON?"</p>
+
+                    <h1 className="text-3xl font-bold text-center mb-3">
+                        Sobre Nós
+                    </h1>
+
+                    <p className="text-center text-gray-600">
+                        "Por que eu deveria usar o GourmetON?"
+                    </p>
+
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10 p-10">
 
                         <div className="text-center border-2 border-orange-500 p-6 rounded-lg shadow-md transition cursor-pointer transition-transform duration-100 hover:scale-105">
-                                <p>🚀</p>
-                                <h2 className="text-xl font-bold mt-4 mb-3">Entrega rápida</h2>
-                                <p className="text-gray-600">
-                                    Receba seus pedidos com agilidade e aproveite sua refeição sem precisar esperar muito.
-                                </p>
+
+                            <p>🚀</p>
+
+                            <h2 className="text-xl font-bold mt-4 mb-3">
+                                Entrega rápida
+                            </h2>
+
+                            <p className="text-gray-600">
+                                Receba seus pedidos com agilidade e aproveite sua refeição sem precisar esperar muito.
+                            </p>
+
                         </div>
 
                         <div className="text-center border-2 border-orange-500 p-6 rounded-lg shadow-md transition cursor-pointer transition-transform duration-100 hover:scale-105">
-                                <p>🍽️</p>
-                                <h2 className="text-xl font-bold mt-4 mb-3">Variedade de opções</h2>
-                                <p className="text-gray-600">Encontre diferentes pratos e opções de restaurantes para escolher exatamente o que está com vontade de comer.</p>
+
+                            <p>🍽️</p>
+
+                            <h2 className="text-xl font-bold mt-4 mb-3">
+                                Variedade de opções
+                            </h2>
+
+                            <p className="text-gray-600">
+                                Encontre diferentes pratos e opções de restaurantes para escolher exatamente o que está com vontade de comer.
+                            </p>
+
                         </div>
 
                         <div className="text-center border-2 border-orange-500 p-6 rounded-lg shadow-md transition cursor-pointer transition-transform duration-100 hover:scale-105">
-                                <p>💳</p>
-                                <h2 className="text-xl font-bold mt-4 mb-3">Pagamento fácil</h2>
-                                <p className="text-gray-600">Faça seus pedidos de forma simples e tenha praticidade na hora de realizar o pagamento.</p>
+
+                            <p>💳</p>
+
+                            <h2 className="text-xl font-bold mt-4 mb-3">
+                                Pagamento fácil
+                            </h2>
+
+                            <p className="text-gray-600">
+                                Faça seus pedidos de forma simples e tenha praticidade na hora de realizar o pagamento.
+                            </p>
+
                         </div> 
 
                     </div> 
@@ -388,6 +423,7 @@ const Produtos = () => { //criando componente produtos
                     id="contato"
                     className="py-20 px-6 bg-orange-50 scroll-mt-20"
                 >
+
                     <div className="max-w-2xl mx-auto text-center">
 
                         <span className="text-4xl">
@@ -420,14 +456,15 @@ const Produtos = () => { //criando componente produtos
                         </form>
 
                     </div>
+
                 </section>
+
             </main>
 
 
             {/* FOOTER */}
             <footer
                 className="bg-gray-900 text-white"
-                
             >
 
                 <div className="max-w-7xl mx-auto px-6 py-14">
@@ -563,4 +600,3 @@ const Produtos = () => { //criando componente produtos
 };
 
 export default Produtos;
-
