@@ -2,11 +2,11 @@ import React, {useState, useEffect} from 'react' // Importando React e os hooks 
 
 const Produtos = () => { //criando componente produtos 
     
-    const [comidas, setComidas] = useState([]);
-    const [busca, setBusca] = useState('');
-    const [tempoMaximo, setTempoMaximo] = useState('');
-    const [cardAberto, setCardAberto] = useState(null); 
-    const [scrolled, setScrolled] = useState(false);
+    const [comidas, setComidas] = useState([]); // Armazena as receitas recebidas da API
+    const [busca, setBusca] = useState(''); // Armazena o texto digitado pelo usuário na busca
+    const [tempoMaximo, setTempoMaximo] = useState(''); // Armazena o tempo máximo selecionado no filtro
+    const [cardAberto, setCardAberto] = useState(null);  // Armazena o ID do card que está com a descrição aberta
+    const [scrolled, setScrolled] = useState(false); // Controla se o usuário já rolou a página
 
     useEffect (() => {
 
@@ -28,7 +28,7 @@ const Produtos = () => { //criando componente produtos
     }, []);
 
 
-    useEffect(() => {
+    useEffect(() => {                           // Adiciona um EventListener para o evento de scroll da janela
         const handleScroll = () => {
             setScrolled(window.scrollY > 0);
         };
@@ -42,7 +42,7 @@ const Produtos = () => { //criando componente produtos
 
 
 
-    const receitasFiltradas = comidas.filter((receita) => {
+    const receitasFiltradas = comidas.filter((receita) => {    // Filtra as receitas com base na busca e no tempo máximo selecionado
     const correspondeBusca = receita.title
         .toLowerCase()
         .includes(busca.toLowerCase());
@@ -54,12 +54,12 @@ const Produtos = () => { //criando componente produtos
 });
 
 
-    return (
+    return (  
 
-        <div className="min-h-screen bg-orange-50 text-gray-800">
+        <div className="min-h-screen bg-orange-50 text-gray-800">    
 
             {/* HEADER */}
-            <header className={`sticky top-0 z-50 shadow-sm ${scrolled ? 'bg-white/90' : 'bg-white'}`}>
+            <header className={`sticky top-0 z-50 shadow-sm ${scrolled ? 'bg-white/90' : 'bg-white'}`}>   {/*Deixa o header sem opacidade quando o usuário rola a página*/}
 
                 <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
@@ -202,8 +202,8 @@ const Produtos = () => { //criando componente produtos
                         </div>
                     
                     
-
-                        <input 
+                        {/* CAMPO DE BUSCA */}
+                        <input                      
                             type="text" 
                             placeholder="Buscar receitas..." 
                             value={busca} 
@@ -224,14 +224,16 @@ const Produtos = () => { //criando componente produtos
 
                         {/* CARDS */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                            
 
+                            {/* Mostra a mensagem de nenhuma receita encontrada */}
                             {receitasFiltradas.length === 0 ? (
                                 <p className="text-gray-500 col-span-full text-center">
                                     Nenhuma receita encontrada.
                                 </p>
                             ) : (
-                                receitasFiltradas.map((receita) => (
-
+                                receitasFiltradas.map((receita) => (     
+                                    // div para cada card de receita, com imagem, título, tempo de preparo e botão para ver descrição
                                     <div 
                                         key={receita.id} 
                                         className="bg-white rounded-2xl overflow-hidden shadow-md border border-gray-100 hover:-translate-y-2 hover:shadow-xl transition duration-300"
@@ -257,13 +259,15 @@ const Produtos = () => { //criando componente produtos
                                                 Tempo de preparo: {receita.readyInMinutes} minutos
                                             </h3>
 
+                                            {/* Botão para ver a descrição da receita, que alterna entre abrir e fechar a descrição ao clicar */}
                                             <button 
                                                 onClick={() => setCardAberto(cardAberto === receita.id ? null : receita.id)} 
                                                 className="mt-4 text-orange-500 font-semibold hover:text-orange-600 transition cursor-pointer transition-transform duration-100 hover:scale-105 hover:text-yellow-500"
                                             >
                                                 Ver descrição →
                                             </button>
-
+                                            
+                                            {/* Se o card for aberto, será mostrada a descrição da receita */}
                                             {cardAberto === receita.id && (
                                                 <div>
                                                     <p>{receita.instructions}</p>
