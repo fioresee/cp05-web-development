@@ -66,7 +66,7 @@ const Produtos = () => { //criando componente produtos
                     {/* LOGO */}
                     <div className="flex items-center gap-2 text-2xl font-bold">
 
-                        <img src="./GourmetOn.png" alt="Logo" className="h-11 w-11 sm:h-14 sm:w-14"/> 
+                        <img src="./public/GourmetOn.png" alt="Logo" className="h-11 w-11 sm:h-14 sm:w-14"/> 
 
                         <span>
                             Gourmet<span className="text-orange-500">ON</span>
