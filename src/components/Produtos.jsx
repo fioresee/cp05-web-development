@@ -66,7 +66,7 @@ const Produtos = () => { //criando componente produtos
                     {/* LOGO */}
                     <div className="flex items-center gap-2 text-2xl font-bold">
 
-                        <img src="./public/GourmetOn.png" alt="Logo" className="h-11 w-11 sm:h-14 sm:w-14"/> 
+                        <img src="/GourmetOn.png" alt="Logo" className="h-11 w-11 sm:h-14 sm:w-14"/> 
 
                         <span>
                             Gourmet<span className="text-orange-500">ON</span>
@@ -168,7 +168,7 @@ const Produtos = () => { //criando componente produtos
                     {/* IMAGEM */}
                     <div className="w-72 h-72 md:w-96 md:h-96 rounded-full bg-orange-100 flex items-center justify-center text-9xl shadow-xl">
 
-                        <img src="./public/GourmetOn.png" alt="Logo" className="h-80 w-80 animate-float"/>
+                        <img src="/GourmetOn.png" alt="Logo" className="h-80 w-80 animate-float"/>
 
                     </div>
 
