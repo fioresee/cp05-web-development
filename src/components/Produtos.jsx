@@ -159,7 +159,7 @@ const Produtos = () => { //criando componente produtos
                             href="#cardapio"
                             className="inline-block mt-8 bg-orange-500 hover:bg-orange-600 text-white px-7 py-3.5 rounded-full font-bold transition shadow-lg"
                         >
-                            Ver cardapio →
+                            Ver cardápio →
                         </a>
 
                     </div>
